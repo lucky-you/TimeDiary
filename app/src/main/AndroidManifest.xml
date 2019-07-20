@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
-    <!--  读写权限 -->
+    <!-- 读写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -68,6 +68,7 @@
         </activity>
         <activity android:name=".common.activity.MainActivity" />
         <activity android:name=".common.activity.LoginActivity" />
+        <activity android:name=".common.activity.HomeActivity"></activity>
     </application>
 
 </manifest>

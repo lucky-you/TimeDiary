@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.zhowin.timediary.R;
+import com.zhowin.timediary.common.activity.HomeActivity;
 import com.zhowin.timediary.common.base.BaseFragment;
 
 /**
@@ -39,6 +40,7 @@ public class HomeFragment extends BaseFragment {
         tvIndexTitle = get(R.id.tvIndexTitle);
         int index = getArguments().getInt("index");
         tvIndexTitle.setText("这是第" + index + "Fragment");
+        tvIndexTitle.setOnClickListener(this::setClickListener);
     }
 
     @Override
@@ -48,6 +50,12 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void setClickListener(View view) {
+        switch (view.getId()) {
+            case R.id.tvIndexTitle:
+                HomeActivity.start(mContext);
+                break;
+
+        }
 
     }
 }
