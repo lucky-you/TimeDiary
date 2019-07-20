@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileVersion
+
+    //正式环境
+    def API_RELEASE_HOST = "\"https://qctc.zhowin.com\""
+    //开发环境
+    def API_DEVELOP_HOST = "\"https://qctc.zhowin.com\""
+
+    defaultConfig {
+        applicationId "com.zhowin.timediary"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        buildConfigField("String", "API_HOST", API_DEVELOP_HOST)
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64','arm64-v8a'
+        }
+
+    }
+
+    signingConfigs {
+        signconfig {
+            keyAlias 'app'
+            keyPassword '110120119'
+            storeFile file('../appKey.keystore')
+            storePassword '110120119'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false //启用Proguard --正常应该是true
+            shrinkResources false //是否清理无用资源,依赖于minifyEnabled
+            zipAlignEnabled true //是否启用zipAlign压缩
+            signingConfig signingConfigs.signconfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_HOST", API_RELEASE_HOST)
+        }
+        debug {
+            //debug也使用正式签名
+            debuggable true
+            zipAlignEnabled true //是否启用zipAlign压缩
+            signingConfig signingConfigs.signconfig
+            matchingFallbacks = ['debug']
+            buildConfigField("String", "API_HOST", API_DEVELOP_HOST)
+        }
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api project(':viewlibrary')
+
+//    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:design:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:cardview-v7:${rootProject.ext.supportVersion}"
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+//    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    implementation 'me.jessyan:autosize:1.1.2'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.github.bumptech.glide:glide:4.4.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
+    implementation 'com.yanzhenjie.permission:support:2.0.1'
+    implementation 'cn.jzvd:jiaozivideoplayer:7.0.5'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+}

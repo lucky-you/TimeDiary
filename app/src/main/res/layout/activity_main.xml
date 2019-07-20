@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zhowin.viewlibrary.view.NoScrollViewPager
+        android:id="@+id/noScrollViewPager"
+        style="@style/RecycleViewCommonStyle"
+        android:layout_weight="1" />
+
+    <View style="@style/DivideStyleOf1dp" />
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/commonTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_49"
+        app:tl_iconHeight="@dimen/spacing_24"
+        app:tl_iconWidth="@dimen/spacing_24"
+        app:tl_textSelectColor="#2C97DE"
+        app:tl_textUnselectColor="#66000000"
+        app:tl_textsize="12sp" />
+
+
+</LinearLayout>
