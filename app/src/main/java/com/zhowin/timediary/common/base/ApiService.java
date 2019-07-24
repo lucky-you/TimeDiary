@@ -2,11 +2,16 @@ package com.zhowin.timediary.common.base;
 
 
 import com.zhowin.timediary.BuildConfig;
+import com.zhowin.timediary.home.model.AdvertisementList;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
@@ -23,9 +28,18 @@ public interface ApiService {
     String PARAM = "param";
     String HEADER_URL = "api/v1";
 
-    String ENCRYPTION_PASSWORD = "xiayun2018";//参数加密密码
 
+    /**
+     * 获取广告
+     */
+    String ADVERTISMENT_LIST_URL = "/api.php/advert/lists";
 
+    /**
+     * 获取广告列表
+     */
+    @FormUrlEncoded
+    @POST(ADVERTISMENT_LIST_URL)
+    Observable<ResultResponse<List<AdvertisementList>>> getAdvertisementList(@Field("advert_type") String param);
 
     /**
      * 下载文件

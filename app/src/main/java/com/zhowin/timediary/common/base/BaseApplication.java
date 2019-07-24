@@ -14,7 +14,7 @@ import com.zhowin.timediary.common.utils.Utils;
 public class BaseApplication extends Application {
 
     protected static BaseApplication instance;
-
+    private String androidIdCode; //设备的id
 
     @Override
     public void onCreate() {
@@ -35,6 +35,13 @@ public class BaseApplication extends Application {
         return instance;
     }
 
+    public String getAndroidIdCode() {
+        return androidIdCode;
+    }
+
+    public void setAndroidIdCode(String androidIdCode) {
+        this.androidIdCode = androidIdCode;
+    }
 
     /**
      * 获取当前进程的名称

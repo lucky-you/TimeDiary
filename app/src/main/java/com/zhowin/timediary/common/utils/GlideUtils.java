@@ -1,8 +1,6 @@
 package com.zhowin.timediary.common.utils;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -19,6 +17,19 @@ import com.zhowin.timediary.common.widget.GlideRoundTransform;
  */
 public class GlideUtils {
 
+    /**
+     * 加载普通图片
+     */
+    public static void loadAdvertisementImage(Context context, String url, ImageView imageView) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(R.drawable.ic_welcome_page)
+                .error(R.drawable.ic_welcome_page)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+        Glide.with(context).load(url)
+                .apply(options)
+                .into(imageView);
+    }
+
 
     /**
      * 加载圆角图片
@@ -28,7 +39,7 @@ public class GlideUtils {
                 .placeholder(R.drawable.ic_default_image_view)
                 .error(R.drawable.ic_default_image_view)
                 .centerCrop()
-                .transform(new GlideRoundTransform(context,6))
+                .transform(new GlideRoundTransform(context, 6))
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         Glide.with(context)
                 .load(url)
@@ -36,23 +47,6 @@ public class GlideUtils {
                 .into(imageView);
     }
 
-
-
-    /**
-     * 加载圆形图片
-     */
-    public static void loadCircleImage(Context context, String url, ImageView imageView) {
-        RequestOptions options = new RequestOptions()
-                .placeholder(R.drawable.ic_default_image_view)
-                .error(R.drawable.ic_default_image_view)
-                .circleCrop()
-                .transform(new GlideRoundTransform(context,6))
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-        Glide.with(context)
-                .load(url)
-                .apply(options)
-                .into(imageView);
-    }
 
     /**
      * 加载普通图片
