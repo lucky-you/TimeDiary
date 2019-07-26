@@ -3,7 +3,6 @@ package com.zhowin.timediary.common.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.flyco.tablayout.CommonTabLayout;
@@ -26,9 +25,9 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
 
 
-    private String[] mTitles = {"首页", "分类", "会员", "分享"};
+    private String[] mTitles = {"首页", "搜索", "推广", "我的"};
 
-    private int[] mIconUnselectIds = {
+    private int[] mIconUnSelectIds = {
             R.drawable.tab_home_unselect, R.drawable.tab_home_unselect,
             R.drawable.tab_home_unselect, R.drawable.tab_home_unselect};
 
@@ -54,11 +53,11 @@ public class MainActivity extends BaseActivity {
     @Override
     public void bindViews(View contentView) {
         BarUtils.setStatusBar(this, false, false);
-        noScrollViewPager=get(R.id.noScrollViewPager);
-        commonTabLayout=get(R.id.commonTabLayout);
+        noScrollViewPager = get(R.id.noScrollViewPager);
+        commonTabLayout = get(R.id.commonTabLayout);
 
         for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new HomeTabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            mTabEntities.add(new HomeTabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
             mFragments.add(HomeFragment.newInstance(i));
         }
 
