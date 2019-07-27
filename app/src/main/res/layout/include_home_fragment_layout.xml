@@ -4,12 +4,43 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <TextView
+    <View
+        android:id="@+id/actionBarTitle"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="0dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_50">
+
+
+        <TextView
+            style="@style/TextViewBody13SpStyle"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/spacing_14"
+            android:background="@drawable/shape_search_grey_bg"
+            android:drawableLeft="@drawable/icon_search"
+            android:drawablePadding="@dimen/spacing_6"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="@string/search" />
+
+
+        <ImageView
+            android:layout_width="@dimen/spacing_20"
+            android:layout_height="@dimen/spacing_20"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/spacing_14"
+            android:src="@drawable/icon_search" />
+
+    </RelativeLayout>
 
     <include layout="@layout/include_mz_banner_layout" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/videoRecyclerView"
+        style="@style/RecycleViewCommonStyle" />
 
 </LinearLayout>

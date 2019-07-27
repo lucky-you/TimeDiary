@@ -2,6 +2,7 @@ package com.zhowin.timediary.home.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,7 +12,10 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 import com.zhowin.timediary.R;
 import com.zhowin.timediary.common.activity.HomeActivity;
 import com.zhowin.timediary.common.base.BaseFragment;
+import com.zhowin.timediary.common.utils.BarUtils;
 import com.zhowin.timediary.home.model.BannerList;
+import com.zhowin.timediary.home.model.HomeVideoList;
+import com.zhowin.timediary.home.model.VideoList;
 import com.zhowin.timediary.home.viewholder.MZBannerViewHolder;
 
 import java.util.ArrayList;
@@ -25,8 +29,10 @@ public class HomeFragment extends BaseFragment {
 
     private MZBannerView mzBannerView;
 
+    private RecyclerView videoRecyclerView;
 
-    private TextView tvIndexTitle;
+    private List<HomeVideoList> homeVideoLists = new ArrayList<>();
+
 
     public static HomeFragment newInstance(int index) {
         HomeFragment fragment = new HomeFragment();
@@ -48,9 +54,10 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void bindViews(View contentView) {
-        int index = getArguments().getInt("index");
+        BarUtils.addMarginTopEqualStatusBarHeight(get(R.id.actionBarTitle));
 
         mzBannerView = get(R.id.mzBannerView);
+        videoRecyclerView = get(R.id.videoRecyclerView);
 
     }
 
@@ -80,6 +87,18 @@ public class HomeFragment extends BaseFragment {
         bannerLists.add(new BannerList("http://img.mukewang.com/551b98ae0001e57906000338.jpg", "CSS动画实用技巧"));
         bannerLists.add(new BannerList("http://img.mukewang.com/5518ecf20001cb4e06000338.jpg", "高德云图在线使用"));
         return bannerLists;
+
+    }
+
+
+    private List<HomeVideoList> getVideoDataList() {
+        List<HomeVideoList> homeVideoLists = new ArrayList<>();
+
+        List<VideoList> videoListsOne = new ArrayList<>();
+
+
+
+        return homeVideoLists;
 
     }
 
