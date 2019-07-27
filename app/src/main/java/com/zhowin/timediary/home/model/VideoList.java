@@ -28,6 +28,14 @@ public class VideoList {
         this.videoName = videoName;
     }
 
+    public String getVideoPhoto() {
+        return videoPhoto;
+    }
+
+    public void setVideoPhoto(String videoPhoto) {
+        this.videoPhoto = videoPhoto;
+    }
+
     public String getVideoDuration() {
         return videoDuration;
     }

@@ -10,7 +10,7 @@ public class HomeVideoList {
 
 
     private String title;
-    private List<VideoList>   list;
+    private List<VideoList> list;
 
     public HomeVideoList(String title, List<VideoList> list) {
         this.title = title;

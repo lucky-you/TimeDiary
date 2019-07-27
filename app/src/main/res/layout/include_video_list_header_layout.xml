@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_50">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_30"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/spacing_14"
+            android:layout_marginRight="@dimen/spacing_14"
+            android:background="@drawable/shape_search_grey_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_search" />
+
+            <TextView
+                android:id="@+id/tvSearchHitMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="@string/search"
+                android:textColor="@color/color_b4b8bc"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/include_mz_banner_layout" />
+</LinearLayout>

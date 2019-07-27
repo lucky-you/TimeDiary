@@ -19,8 +19,8 @@
         android:layout_height="@dimen/spacing_49"
         app:tl_iconHeight="@dimen/spacing_24"
         app:tl_iconWidth="@dimen/spacing_24"
-        app:tl_textSelectColor="@color/color_EEC900"
-        app:tl_textUnselectColor="@color/color_666"
+        app:tl_textSelectColor="@color/theme_color"
+        app:tl_textUnselectColor="@color/color_73787a"
         app:tl_textsize="12sp" />
 
 </LinearLayout>

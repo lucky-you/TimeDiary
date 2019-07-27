@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity {
 
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new HomeTabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
-            mFragments.add(HomeFragment.newInstance(i));
+            mFragments.add(HomeFragment.newInstance());
         }
 
         noScrollViewPager.setAdapter(new HomePageAdapter(getSupportFragmentManager(), mFragments, mTitles));

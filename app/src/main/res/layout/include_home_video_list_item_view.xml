@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_40">
+
+
+        <TextView
+            android:id="@+id/tvVideoTypeTitle"
+            style="@style/TextViewBody13SpStyle"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_10"
+            android:text="@string/app_name"
+            android:textColor="@color/color_1a1a1a"
+            android:textSize="17sp" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/spacing_140"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/spacing_10">
+
+
+            <LinearLayout
+                android:id="@+id/llChangeBatchesLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextViewBody13SpStyle"
+                    android:text="@string/Change_batches"
+                    android:textColor="@color/color_b4b8bc" />
+
+                <ImageView
+                    android:id="@+id/ivChangeImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_4"
+                    android:src="@drawable/icon_search" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvRightMore"
+                style="@style/TextViewBody13SpStyle"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawableRight="@drawable/icon_right_more"
+                android:drawablePadding="@dimen/spacing_10"
+                android:gravity="center_vertical"
+                android:text="@string/More"
+                android:textColor="@color/color_b4b8bc" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/VideoListRecycler"
+        style="@style/RecycleViewCommonStyle" />
+
+
+</LinearLayout>

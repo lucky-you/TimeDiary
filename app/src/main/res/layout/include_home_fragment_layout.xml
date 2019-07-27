@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -9,38 +10,46 @@
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_50">
+        android:layout_height="@dimen/spacing_44">
 
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/slidingTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/spacing_44"
+            app:tl_indicator_color="@color/theme_color"
+            app:tl_indicator_corner_radius="@dimen/spacing_2"
+            app:tl_indicator_height="@dimen/spacing_4"
+            app:tl_indicator_margin_bottom="@dimen/spacing_4"
+            app:tl_indicator_width="@dimen/spacing_20"
+            app:tl_textSelectColor="@color/theme_color"
+            app:tl_textUnselectColor="@color/color_1a1a1a"
+            app:tl_textsize="16sp" />
 
-        <TextView
-            style="@style/TextViewBody13SpStyle"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/spacing_14"
-            android:background="@drawable/shape_search_grey_bg"
-            android:drawableLeft="@drawable/icon_search"
-            android:drawablePadding="@dimen/spacing_6"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/spacing_10"
-            android:text="@string/search" />
-
-
-        <ImageView
-            android:layout_width="@dimen/spacing_20"
-            android:layout_height="@dimen/spacing_20"
+        <RelativeLayout
+            android:id="@+id/rlAddColumn"
+            android:layout_width="@dimen/spacing_44"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/spacing_14"
-            android:src="@drawable/icon_search" />
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:focusable="false"
+                android:src="@drawable/icon_search" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
-    <include layout="@layout/include_mz_banner_layout" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/videoRecyclerView"
+    <com.zhowin.viewlibrary.view.NoScrollViewPager
+        android:id="@+id/noScrollViewPager"
         style="@style/RecycleViewCommonStyle" />
 
 </LinearLayout>

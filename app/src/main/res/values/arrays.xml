@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="videoTitleList">
+
+        <item>推荐</item>
+        <item>电影</item>
+        <item>电视剧</item>
+        <item>综艺</item>
+        <item>动漫</item>
+        <item>记录片</item>
+
+    </string-array>
+
+
+</resources>

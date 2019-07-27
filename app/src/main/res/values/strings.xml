@@ -31,5 +31,8 @@
     <string name="message_overlay_failed">系统拒绝了其他程序的安装</string>
     <string name="message_error_storage">请检查外部存储设备</string>
     <string name="search">搜索</string>
+    <string name="More">更多</string>
+    <string name="Change_batches">换一批</string>
+    <string name="I_have_bottom_line">我是有底线的</string>
 
 </resources>
