@@ -12,6 +12,10 @@ public class HomeVideoList {
     private String title;
     private List<VideoList>   list;
 
+    public HomeVideoList(String title, List<VideoList> list) {
+        this.title = title;
+        this.list = list;
+    }
 
     public String getTitle() {
         return title;

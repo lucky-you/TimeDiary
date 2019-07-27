@@ -82,21 +82,53 @@ public class HomeFragment extends BaseFragment {
 
     private List<BannerList> getBannerList() {
         List<BannerList> bannerLists = new ArrayList<>();
-        bannerLists.add(new BannerList("http://img.mukewang.com/55237dcc0001128c06000338.jpg", "环境变量配置文件"));
-        bannerLists.add(new BannerList("http://img.mukewang.com/552640c300018a9606000338.jpg", "Android断点续传下载"));
-        bannerLists.add(new BannerList("http://img.mukewang.com/551b98ae0001e57906000338.jpg", "CSS动画实用技巧"));
-        bannerLists.add(new BannerList("http://img.mukewang.com/5518ecf20001cb4e06000338.jpg", "高德云图在线使用"));
+        bannerLists.add(new BannerList(imageList[0], "环境变量配置文件"));
+        bannerLists.add(new BannerList(imageList[1], "Android断点续传下载"));
+        bannerLists.add(new BannerList(imageList[2], "CSS动画实用技巧"));
+        bannerLists.add(new BannerList(imageList[3], "高德云图在线使用"));
         return bannerLists;
 
     }
+
+    public String[] imageList = {
+            "http://img.mukewang.com/55237dcc0001128c06000338.jpg",
+            "http://img.mukewang.com/552640c300018a9606000338.jpg",
+            "http://img.mukewang.com/551b98ae0001e57906000338.jpg",
+            "http://img.mukewang.com/5518ecf20001cb4e06000338.jpg"
+    };
 
 
     private List<HomeVideoList> getVideoDataList() {
         List<HomeVideoList> homeVideoLists = new ArrayList<>();
 
         List<VideoList> videoListsOne = new ArrayList<>();
+        List<VideoList> videoListsTwo = new ArrayList<>();
+        List<VideoList> videoListsThree = new ArrayList<>();
+        List<VideoList> videoListsFour = new ArrayList<>();
 
+        videoListsOne.add(new VideoList("狂野巨兽", imageList[0], "02:15:36", "1635", "87%"));
+        videoListsOne.add(new VideoList("机械师", imageList[1], "02:15:36", "1635", "87%"));
+        videoListsOne.add(new VideoList("扫毒2", imageList[2], "02:15:36", "1635", "87%"));
+        videoListsOne.add(new VideoList("战斗天使", imageList[3], "02:15:36", "1635", "87%"));
+        homeVideoLists.add(new HomeVideoList("热播动作片", videoListsOne));
 
+        videoListsTwo.add(new VideoList("狂野巨兽", imageList[0], "02:15:36", "1635", "87%"));
+        videoListsTwo.add(new VideoList("机械师", imageList[1], "02:15:36", "1635", "87%"));
+        videoListsTwo.add(new VideoList("扫毒2", imageList[2], "02:15:36", "1635", "87%"));
+        videoListsTwo.add(new VideoList("战斗天使", imageList[3], "02:15:36", "1635", "87%"));
+        homeVideoLists.add(new HomeVideoList("热播科幻片", videoListsTwo));
+
+        videoListsThree.add(new VideoList("狂野巨兽", imageList[0], "02:15:36", "1635", "87%"));
+        videoListsThree.add(new VideoList("机械师", imageList[1], "02:15:36", "1635", "87%"));
+        videoListsThree.add(new VideoList("扫毒2", imageList[2], "02:15:36", "1635", "87%"));
+        videoListsThree.add(new VideoList("战斗天使", imageList[3], "02:15:36", "1635", "87%"));
+        homeVideoLists.add(new HomeVideoList("热播爱情片", videoListsThree));
+
+        videoListsFour.add(new VideoList("狂野巨兽", imageList[0], "02:15:36", "1635", "87%"));
+        videoListsFour.add(new VideoList("机械师", imageList[1], "02:15:36", "1635", "87%"));
+        videoListsFour.add(new VideoList("扫毒2", imageList[2], "02:15:36", "1635", "87%"));
+        videoListsFour.add(new VideoList("战斗天使", imageList[3], "02:15:36", "1635", "87%"));
+        homeVideoLists.add(new HomeVideoList("热播动画片", videoListsFour));
 
         return homeVideoLists;
 
