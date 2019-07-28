@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+
+    <TextView
+        android:id="@+id/tvColumnText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_36"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/spacing_4"
+        android:background="@drawable/shape_column_list_grey_bg"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/color_73787a"
+        android:textSize="14sp" />
+
+
+    <ImageView
+        android:id="@+id/icDeleteItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_search"
+        android:visibility="gone" />
+</RelativeLayout>

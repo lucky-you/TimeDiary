@@ -6,13 +6,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zhouwei.mzbanner.MZBannerView;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
 import com.zhowin.timediary.R;
 import com.zhowin.timediary.common.base.BaseFragment;
 import com.zhowin.timediary.common.utils.ConstantValues;
+import com.zhowin.timediary.home.activity.VideoPlaybackActivity;
 import com.zhowin.timediary.home.adapter.HomeVideoListAdapter;
+import com.zhowin.timediary.home.callback.OnVideoListClickListener;
 import com.zhowin.timediary.home.model.BannerList;
 import com.zhowin.timediary.home.model.HomeVideoList;
 import com.zhowin.timediary.home.model.VideoList;
@@ -25,7 +28,7 @@ import java.util.List;
  * Created by : Z_B on 2019/7/27.
  * describe：视频列表的fragment
  */
-public class VideoListFragment extends BaseFragment {
+public class VideoListFragment extends BaseFragment implements BaseQuickAdapter.OnItemChildClickListener, OnVideoListClickListener {
 
 
     public static VideoListFragment newInstance(int index) {
@@ -87,6 +90,10 @@ public class VideoListFragment extends BaseFragment {
         videoRecyclerView.setAdapter(homeVideoListAdapter);
         homeVideoListAdapter.addHeaderView(headerView);
         homeVideoListAdapter.addFooterView(footView);
+
+        homeVideoListAdapter.setOnVideoListClickListener(this::onVideoClick);
+        homeVideoListAdapter.setOnItemChildClickListener(this::onItemChildClick);
+
 
     }
 
@@ -159,5 +166,24 @@ public class VideoListFragment extends BaseFragment {
     public void onPause() {
         super.onPause();
         mzBannerView.pause();
+    }
+
+    @Override
+    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+        switch (view.getId()) {
+            case R.id.llChangeBatchesLayout:
+                showToast("点击了换一批");
+                break;
+            case R.id.tvRightMore:
+                showToast("点击了更多");
+                break;
+        }
+    }
+
+    @Override
+    public void onVideoClick(int position, String videoUrl) {
+        String playVideoUrl = "https://flv2.bn.netease.com/videolib1/1811/26/OqJAZ893T/HD/OqJAZ893T-mobile.mp4";
+//        String playVideoUrl = "http://9890.vod.myqcloud.com/9890_4e292f9a3dd011e6b4078980237cc3d3.f20.mp4";
+        VideoPlaybackActivity.start(mContext, playVideoUrl);
     }
 }

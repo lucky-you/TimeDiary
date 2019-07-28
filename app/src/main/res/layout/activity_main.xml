@@ -11,7 +11,7 @@
         style="@style/RecycleViewCommonStyle"
         android:layout_weight="1" />
 
-    <View style="@style/DivideStyleOf1dp" />
+    <View style="@style/DivideLineStyle" />
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/commonTabLayout"

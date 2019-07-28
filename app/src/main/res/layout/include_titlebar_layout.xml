@@ -38,8 +38,8 @@
         android:gravity="center"
         android:maxWidth="@dimen/spacing_224"
         android:maxLines="1"
-        android:textColor="@color/color_333"
-        android:textSize="16sp" />
+        android:textColor="@color/color_1a1a1a"
+        android:textSize="17sp" />
 
 
     <LinearLayout
@@ -67,8 +67,8 @@
             android:paddingLeft="@dimen/spacing_12"
             android:paddingRight="@dimen/spacing_12"
             android:text=""
-            android:textColor="@color/color_333"
-            android:textSize="14sp"
+            android:textColor="@color/color_1a1a1a"
+            android:textSize="15sp"
             android:visibility="gone" />
 
     </LinearLayout>

@@ -32,5 +32,6 @@ public interface ConstantValues {
     String MODEL = "model";
     String PRICE = "price";
     String PASSWORD = "password";
+    String VIDEO_URL = "video_url";
 
 }

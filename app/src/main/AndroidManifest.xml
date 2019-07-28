@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--状态栏适配-->
+        <!-- 状态栏适配 -->
 
 
         <!-- 适配 https://github.com/JessYanCoding/AndroidAutoSize -->
@@ -47,17 +47,32 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".common.activity.SplashActivity">
+        <activity
+            android:name=".common.activity.SplashActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".common.activity.MainActivity" />
-        <activity android:name=".common.activity.LoginActivity" />
-        <activity android:name=".common.activity.HomeActivity" />
-        <activity android:name=".common.activity.AdvertisingPageActivity"></activity>
+        <activity
+            android:name=".common.activity.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".common.activity.LoginActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".common.activity.HomeActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".common.activity.AdvertisingPageActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".home.activity.VideoPlaybackActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity android:name=".home.activity.AllChannelsActivity"></activity>
     </application>
 
 </manifest>

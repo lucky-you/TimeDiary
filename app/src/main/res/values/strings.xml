@@ -34,5 +34,21 @@
     <string name="More">更多</string>
     <string name="Change_batches">换一批</string>
     <string name="I_have_bottom_line">我是有底线的</string>
+    <string name="logout_hit_message">确定要退出应用吗?</string>
+    <string name="Determine">确定</string>
+    <string name="Cancel">取消</string>
+    <string name="onLine_Playing">正在播放:%s</string>
+    <string name="Duration">时长:%s</string>
+    <string name="Playback_volume">播放量: %s次观看</string>
+    <string name="Collection">收藏</string>
+    <string name="Unlimited_Viewing">无限观看</string>
+    <string name="Cache_Download">缓存下载</string>
+    <string name="Guess_you_like_it">猜你喜欢</string>
+    <string name="All_Channels">全部频道</string>
+    <string name="edit">编辑</string>
+    <string name="complete">完成</string>
+    <string name="My_Channel">我的频道</string>
+    <string name="Recommended_Channel">推荐频道</string>
+
 
 </resources>

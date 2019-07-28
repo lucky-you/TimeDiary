@@ -10,6 +10,7 @@ import com.zhowin.timediary.R;
 import com.zhowin.timediary.common.adapter.HomePageAdapter;
 import com.zhowin.timediary.common.base.BaseFragment;
 import com.zhowin.timediary.common.utils.BarUtils;
+import com.zhowin.timediary.home.activity.AllChannelsActivity;
 import com.zhowin.viewlibrary.view.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -69,6 +70,11 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void setClickListener(View view) {
+        switch (view.getId()) {
+            case R.id.rlAddColumn:
+                AllChannelsActivity.start(mContext);
+                break;
+        }
 
     }
 
