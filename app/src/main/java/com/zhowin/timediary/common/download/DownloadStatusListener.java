@@ -17,16 +17,23 @@ public interface DownloadStatusListener {
     void onProgress(int currentLength);
 
     /**
-     * 下载结束
+     * 暂停
      *
-     * @param localPath 路径
+     * @param currentLength 进度
      */
-    void onFinish(String localPath);
+    void onPause(int currentLength);
+
+    /**
+     * 下载成功
+     *
+     * @param localPath 存储到本地的路径
+     */
+    void onSuccess(String localPath);
 
     /**
      * 下载失败
      *
      * @param errorInfo 信息
      */
-    void onFailure(String errorInfo);
+    void onError(String errorInfo);
 }

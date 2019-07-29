@@ -22,10 +22,11 @@ import static com.bumptech.glide.load.resource.bitmap.VideoBitmapDecoder.FRAME_O
 public class VideoUtils {
 
     /**
+     * 截取视频的第一帧作为封面
      *
-     * @param context 上下文
-     * @param uri  视频地址
-     * @param imageView  显示图片
+     * @param context   上下文
+     * @param uri       视频地址
+     * @param imageView 显示图片
      */
     public static void loadVideoScreenshot(final Context context, String uri, ImageView imageView) {
         RequestOptions requestOptions = RequestOptions.frameOf(0); //默认第一帧
@@ -35,6 +36,7 @@ public class VideoUtils {
             protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int outWidth, int outHeight) {
                 return toTransform;
             }
+
             @Override
             public void updateDiskCacheKey(MessageDigest messageDigest) {
                 try {

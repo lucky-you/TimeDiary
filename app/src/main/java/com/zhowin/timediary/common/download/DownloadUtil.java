@@ -84,7 +84,7 @@ public class DownloadUtil {
 
                         @Override
                         public void onError(Throwable e) {
-                            downloadListener.onFailure(e.getMessage());
+                            downloadListener.onError(e.getMessage());
                         }
 
                         @Override
@@ -96,7 +96,7 @@ public class DownloadUtil {
 
         } else {
             //已经存在了，不再重复下载
-            downloadListener.onFinish(mVideoPath);
+            downloadListener.onSuccess(mVideoPath);
         }
     }
 
@@ -108,7 +108,7 @@ public class DownloadUtil {
         long currentLength = 0;
         OutputStream os = null;
         if (response == null) {
-            downloadListener.onFailure("资源错误!");
+            downloadListener.onError("资源错误!");
             return;
         }
         InputStream is = response.byteStream();
@@ -123,14 +123,14 @@ public class DownloadUtil {
                 Log.e(TAG, "当前进度:" + currentLength);
                 downloadListener.onProgress((int) (100 * currentLength / totalLength));
                 if ((int) (100 * currentLength / totalLength) == 100) {
-                    downloadListener.onFinish(mVideoPath);
+                    downloadListener.onSuccess(mVideoPath);
                 }
             }
         } catch (FileNotFoundException e) {
-            downloadListener.onFailure("未找到文件!");
+            downloadListener.onError("未找到文件!");
             e.printStackTrace();
         } catch (IOException e) {
-            downloadListener.onFailure("IO错误!");
+            downloadListener.onError("IO错误!");
             e.printStackTrace();
         } finally {
             if (os != null) {

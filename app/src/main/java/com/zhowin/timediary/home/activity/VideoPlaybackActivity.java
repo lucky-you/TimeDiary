@@ -2,28 +2,20 @@ package com.zhowin.timediary.home.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.bumptech.glide.request.RequestOptions;
 import com.zhowin.timediary.R;
 import com.zhowin.timediary.common.base.BaseActivity;
+import com.zhowin.timediary.common.base.BaseApplication;
+import com.zhowin.timediary.common.download.DownloadStatusListener;
+import com.zhowin.timediary.common.download.DownloadVideoUtils;
 import com.zhowin.timediary.common.utils.BarUtils;
 import com.zhowin.timediary.common.utils.ConstantValues;
 import com.zhowin.timediary.home.adapter.GuessLikeVideoAdapter;
@@ -31,17 +23,14 @@ import com.zhowin.timediary.home.callback.OnSunVideoStateListener;
 import com.zhowin.timediary.home.model.VideoList;
 import com.zhowin.timediary.home.view.SunVideoView;
 import com.zhowin.timediary.home.widget.VideoUtils;
-import com.zhowin.viewlibrary.callback.NestedScrollViewListener;
 import com.zhowin.viewlibrary.view.NoNestedScrollview;
 
-import java.security.MessageDigest;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.jzvd.Jzvd;
 import cn.jzvd.JzvdStd;
-
-import static com.bumptech.glide.load.resource.bitmap.VideoBitmapDecoder.FRAME_OPTION;
 
 /**
  * 视频播放
@@ -79,12 +68,12 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
         BarUtils.setStatusBar(this, false, false);
         BarUtils.setStatusBarLightMode(this, false);
 
-
         noNestedScrollview = get(R.id.noNestedScrollview);
         GuessLikeRecyclerView = get(R.id.GuessLikeRecyclerView);
         jzvdStd = get(R.id.videoPlayer);
         jzvdStd.setOnSunVideoStateListener(this);
         Jzvd.setVideoImageDisplayType(Jzvd.VIDEO_IMAGE_DISPLAY_TYPE_FILL_SCROP);
+        get(R.id.llCacheDownloadLayout).setOnClickListener(this::setClickListener);
 
 
     }
@@ -93,35 +82,62 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
     @Override
     public void processLogic(Bundle savedInstanceState) {
         if (!TextUtils.isEmpty(playVideoUrl)) {
+            Log.e("xy", "playVideoUrl=" + playVideoUrl);
             jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL);
             VideoUtils.loadVideoScreenshot(mContext, playVideoUrl, jzvdStd.thumbImageView);
-//            jzvdStd.startVideo();
         }
+
         guessLikeVideoAdapter = new GuessLikeVideoAdapter(getVideoList());
         GuessLikeRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         GuessLikeRecyclerView.setAdapter(guessLikeVideoAdapter);
-        noNestedScrollview.setScrollViewListener(new NestedScrollViewListener() {
-            @Override
-            public void onScrollChanged(NestedScrollView scrollView, int x, int y, int oldX, int oldY) {
-            }
 
-            @Override
-            public void onScroll(int scrollY) {
-                Log.e("xy", "scrollY=" + scrollY + "<-JZHeight->" + jzvdStd.getHeight());
-                if (scrollY >= jzvdStd.getHeight()) {
-
-                } else {
-
-                }
-            }
-        });
     }
 
 
     @Override
     public void setClickListener(View view) {
+        switch (view.getId()) {
+            case R.id.llCacheDownloadLayout:
+                String PATH_CHALLENGE_VIDEO = Environment.getExternalStorageDirectory().getAbsolutePath()
+                        + File.separator + BaseApplication.getInstance().getString(R.string.app_name)
+                        + File.separator + "video" + File.separator + "汽车";
 
+                downLoadVideo(playVideoUrl, PATH_CHALLENGE_VIDEO);
+
+                break;
+        }
     }
+
+    private void downLoadVideo(String fileUrl, String targetPath) {
+        DownloadVideoUtils.startDownLoadFile(fileUrl, targetPath, new DownloadStatusListener() {
+            @Override
+            public void onStart() {
+                Log.e("xy", "开始下载...");
+            }
+
+            @Override
+            public void onProgress(int currentLength) {
+                Log.e("xy", "下载中：" + currentLength);
+            }
+
+            @Override
+            public void onPause(int currentLength) {
+                Log.e("xy", "下载暂停：" + currentLength);
+            }
+
+            @Override
+            public void onSuccess(String localPath) {
+                Log.e("xy", "下载完成：" + localPath);
+                showToast("缓存到本地:" + localPath);
+            }
+
+            @Override
+            public void onError(String errorInfo) {
+                Log.e("xy", "下载失败：" + errorInfo);
+            }
+        });
+    }
+
 
     private List<VideoList> getVideoList() {
         List<VideoList> videoListsThree = new ArrayList<>();
@@ -138,6 +154,7 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
             "http://img.mukewang.com/551b98ae0001e57906000338.jpg",
             "http://img.mukewang.com/5518ecf20001cb4e06000338.jpg"
     };
+
 
     @Override
     public void onBackPressed() {

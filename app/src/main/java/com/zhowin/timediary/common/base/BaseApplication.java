@@ -5,6 +5,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.liulishuo.filedownloader.FileDownloader;
+import com.liulishuo.filedownloader.connection.FileDownloadUrlConnection;
 import com.zhowin.timediary.common.utils.Utils;
 
 
@@ -16,11 +18,23 @@ public class BaseApplication extends Application {
     protected static BaseApplication instance;
     private String androidIdCode; //设备的id
 
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
         Utils.init(this);
+        initDownLoad();
+    }
+
+    private void initDownLoad() {
+        FileDownloader.setupOnApplicationOnCreate(this)
+                .connectionCreator(new FileDownloadUrlConnection
+                        .Creator(new FileDownloadUrlConnection.Configuration()
+                        .connectTimeout(15_000) // set connection timeout.
+                        .readTimeout(15_000) // set read timeout.
+                ))
+                .commit();
     }
 
 
