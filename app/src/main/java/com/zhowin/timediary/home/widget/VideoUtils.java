@@ -11,6 +11,8 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.MessageDigest;
 
 import static com.bumptech.glide.load.resource.bitmap.VideoBitmapDecoder.FRAME_OPTION;
@@ -48,4 +50,48 @@ public class VideoUtils {
         });
         Glide.with(context).load(uri).apply(requestOptions).into(imageView);
     }
+
+
+
+
+    public static File getVideoCacheDir(Context context) {
+        return new File(context.getExternalCacheDir(), "video-cache");
+    }
+
+    public static void cleanVideoCacheDir(Context context) throws IOException {
+        File videoCacheDir = getVideoCacheDir(context);
+        cleanDirectory(videoCacheDir);
+    }
+
+    private static void cleanDirectory(File file) throws IOException {
+        if (!file.exists()) {
+            return;
+        }
+        File[] contentFiles = file.listFiles();
+        if (contentFiles != null) {
+            for (File contentFile : contentFiles) {
+                delete(contentFile);
+            }
+        }
+    }
+
+    private static void delete(File file) throws IOException {
+        if (file.isFile() && file.exists()) {
+            deleteOrThrow(file);
+        } else {
+            cleanDirectory(file);
+            deleteOrThrow(file);
+        }
+    }
+
+    private static void deleteOrThrow(File file) throws IOException {
+        if (file.exists()) {
+            boolean isDeleted = file.delete();
+            if (!isDeleted) {
+                throw new IOException(String.format("File %s can't be deleted", file.getAbsolutePath()));
+            }
+        }
+    }
+
+
 }
