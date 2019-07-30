@@ -183,8 +183,7 @@ public class VideoListFragment extends BaseFragment implements BaseQuickAdapter.
 
     @Override
     public void onVideoClick(int position, String videoUrl) {
-        String playVideoUrl = "https://flv2.bn.netease.com/videolib1/1811/26/OqJAZ893T/HD/OqJAZ893T-mobile.mp4"; //-->12.3M
-//        String playVideoUrl = "https://v8.yongjiu8.com/share/AtoOPxllbwrdhaP0";  //
-        VideoPlaybackActivity.start(mContext, playVideoUrl);
+
+        VideoPlaybackActivity.start(mContext, ConstantValues.SMALL_VIDEO_URL);
     }
 }

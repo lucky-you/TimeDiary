@@ -21,6 +21,8 @@ import com.zhowin.timediary.common.utils.ConstantValues;
 import com.zhowin.timediary.home.adapter.GuessLikeVideoAdapter;
 import com.zhowin.timediary.home.callback.OnSunVideoStateListener;
 import com.zhowin.timediary.home.model.VideoList;
+import com.zhowin.timediary.home.view.JZMediaIjk;
+import com.zhowin.timediary.home.view.JZMediaSystemAssertFolder;
 import com.zhowin.timediary.home.view.SunVideoView;
 import com.zhowin.timediary.home.widget.VideoUtils;
 import com.zhowin.viewlibrary.view.NoNestedScrollview;
@@ -81,15 +83,21 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
-        if (!TextUtils.isEmpty(playVideoUrl)) {
-            Log.e("xy", "playVideoUrl=" + playVideoUrl);
-            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL);
-            VideoUtils.loadVideoScreenshot(mContext, playVideoUrl, jzvdStd.thumbImageView);
-        }
-
         guessLikeVideoAdapter = new GuessLikeVideoAdapter(getVideoList());
         GuessLikeRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         GuessLikeRecyclerView.setAdapter(guessLikeVideoAdapter);
+
+        if (!TextUtils.isEmpty(playVideoUrl)) {
+            Log.e("xy", "playVideoUrl=" + playVideoUrl);
+            VideoUtils.loadVideoScreenshot(mContext, playVideoUrl, jzvdStd.thumbImageView);
+            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL);
+//            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL, JZMediaSystemAssertFolder.class);
+//            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL, JZMediaIjk.class);
+//            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL, JZMediaExo.class);
+        }
+
+//        jzvdStd.setMediaInterface(new CustomMediaPlayerAssertFolder());
+
 
     }
 

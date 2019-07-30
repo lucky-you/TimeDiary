@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.danikula.videocache.HttpProxyCacheServer;
 import com.liulishuo.filedownloader.FileDownloader;
 import com.liulishuo.filedownloader.connection.FileDownloadUrlConnection;
 import com.zhowin.timediary.common.utils.Utils;
@@ -17,7 +18,7 @@ public class BaseApplication extends Application {
 
     protected static BaseApplication instance;
     private String androidIdCode; //设备的id
-
+    private HttpProxyCacheServer proxy;
 
     @Override
     public void onCreate() {
@@ -36,6 +37,19 @@ public class BaseApplication extends Application {
                 ))
                 .commit();
     }
+
+    public static HttpProxyCacheServer getProxy(Context context) {
+        BaseApplication app = (BaseApplication) context.getApplicationContext();
+        return app.proxy == null ? (app.proxy = app.newProxy()) : app.proxy;
+    }
+
+
+    private HttpProxyCacheServer newProxy() {
+        return new HttpProxyCacheServer.Builder(this)
+                .maxCacheSize(1024 * 1024 * 1024)       // 1 Gb for cache
+                .build();
+    }
+
 
 
     @Override
