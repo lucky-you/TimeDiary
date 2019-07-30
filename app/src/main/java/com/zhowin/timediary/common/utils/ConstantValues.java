@@ -47,7 +47,7 @@ public interface ConstantValues {
 
     String MIDDLE_VIDEO_URL = "https://video.openwhy.cn/ljojX4Shxtkn35xuPCvoD_tK6jG1";//84.9M
 
-    String BIG_VIDEO_URL = "https://v8.yongjiu8.com/share/AtoOPxllbwrdhaP0"; //
+    String BIG_VIDEO_URL = "https://v8.yongjiu8.com/share/AtoOPxllbwrdhaP0";
 
 
 }

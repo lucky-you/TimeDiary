@@ -96,9 +96,6 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
 //            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL, JZMediaExo.class);
         }
 
-//        jzvdStd.setMediaInterface(new CustomMediaPlayerAssertFolder());
-
-
     }
 
 
