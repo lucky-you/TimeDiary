@@ -101,7 +101,7 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
             map.put("高清", proxyUrl);
             map.put("标清", proxyUrl);
             map.put("普清", proxyUrl);
-            JZDataSource jzDataSource = new JZDataSource(map, "汽车视频");
+            JZDataSource jzDataSource = new JZDataSource(map, "");
             jzDataSource.looping = false;
             jzDataSource.currentUrlIndex = 2;
             jzDataSource.headerMap.put("key", "value");//header
@@ -118,7 +118,7 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
             public void onScrollChanged(NestedScrollView scrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 Log.e("xy", "scrollY=" + scrollY + "<--jzHeight=" + jzvdStd.getHeight());
                 if (scrollY >= jzvdStd.getHeight()) {
-                    jzvdStd.gotoScreenTiny();
+//                    jzvdStd.gotoScreenTiny();
                 } else {
 
                 }
