@@ -87,11 +87,12 @@ public class SunVideoView extends JzvdStd {
 
     }
 
+
     /**
      * 开启小窗播放
      */
     public void gotoScreenTiny() {
-        Log.i(TAG, "startWindowTiny " + " [" + this.hashCode() + "] ");
+        Log.e(TAG, "startWindowTiny " + " [" + this.hashCode() + "] ");
         if (state == STATE_NORMAL || state == STATE_ERROR || state == STATE_AUTO_COMPLETE)
             return;
         ViewGroup vg = (ViewGroup) getParent();

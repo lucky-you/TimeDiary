@@ -10,7 +10,7 @@ import android.support.v4.widget.NestedScrollView;
 public interface NestedScrollViewListener {
 
     /*** 在滑动的时候调用*/
-    void onScrollChanged(NestedScrollView scrollView, int x, int y, int oldX, int oldY);
+    void onScrollChanged(NestedScrollView scrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY);
 
     /*** 在滑动的时候调用，scrollY为已滑动的距离*/
     void onScroll(int scrollY);

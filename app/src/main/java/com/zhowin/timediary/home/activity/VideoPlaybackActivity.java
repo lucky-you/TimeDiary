@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -25,12 +26,15 @@ import com.zhowin.timediary.home.view.JZMediaIjk;
 import com.zhowin.timediary.home.view.JZMediaSystemAssertFolder;
 import com.zhowin.timediary.home.view.SunVideoView;
 import com.zhowin.timediary.home.widget.VideoUtils;
+import com.zhowin.viewlibrary.callback.NestedScrollViewListener;
 import com.zhowin.viewlibrary.view.NoNestedScrollview;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import cn.jzvd.JZDataSource;
 import cn.jzvd.Jzvd;
 import cn.jzvd.JzvdStd;
 
@@ -90,11 +94,43 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
         if (!TextUtils.isEmpty(playVideoUrl)) {
             Log.e("xy", "playVideoUrl=" + playVideoUrl);
             VideoUtils.loadVideoScreenshot(mContext, playVideoUrl, jzvdStd.thumbImageView);
-            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL);
+
+
+            LinkedHashMap map = new LinkedHashMap();
+            String proxyUrl = BaseApplication.getProxy(this).getProxyUrl(playVideoUrl);
+            map.put("高清", proxyUrl);
+            map.put("标清", proxyUrl);
+            map.put("普清", proxyUrl);
+            JZDataSource jzDataSource = new JZDataSource(map, "汽车视频");
+            jzDataSource.looping = false;
+            jzDataSource.currentUrlIndex = 2;
+            jzDataSource.headerMap.put("key", "value");//header
+            jzvdStd.setUp(jzDataSource, JzvdStd.SCREEN_NORMAL);
+
+//            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL);
 //            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL, JZMediaSystemAssertFolder.class);
 //            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL, JZMediaIjk.class);
 //            jzvdStd.setUp(playVideoUrl, "", JzvdStd.SCREEN_NORMAL, JZMediaExo.class);
         }
+
+        noNestedScrollview.setScrollViewListener(new NestedScrollViewListener() {
+            @Override
+            public void onScrollChanged(NestedScrollView scrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                Log.e("xy", "scrollY=" + scrollY + "<--jzHeight=" + jzvdStd.getHeight());
+                if (scrollY >= jzvdStd.getHeight()) {
+                    jzvdStd.gotoScreenTiny();
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onScroll(int scrollY) {
+
+
+            }
+        });
+
 
     }
 
