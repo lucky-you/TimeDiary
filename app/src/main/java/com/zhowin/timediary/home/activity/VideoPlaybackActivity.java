@@ -141,7 +141,8 @@ public class VideoPlaybackActivity extends BaseActivity implements OnSunVideoSta
             case R.id.llCacheDownloadLayout:
                 String PATH_CHALLENGE_VIDEO = Environment.getExternalStorageDirectory().getAbsolutePath()
                         + File.separator + BaseApplication.getInstance().getString(R.string.app_name)
-                        + File.separator + "video" + File.separator + "汽车";
+                        + File.separator + "video"
+                        + File.separator + "汽车";
 
                 downLoadVideo(playVideoUrl, PATH_CHALLENGE_VIDEO);
 
