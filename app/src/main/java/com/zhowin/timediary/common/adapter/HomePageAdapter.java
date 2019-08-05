@@ -2,7 +2,7 @@ package com.zhowin.timediary.common.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Created by: Z_B on 2017/7/10.
  * Function: viewPager的adapter
  */
-public class HomePageAdapter extends FragmentPagerAdapter {
+public class HomePageAdapter extends FragmentStatePagerAdapter {
 
     private List<Fragment> mFragments;
     private String[] mTitles;
